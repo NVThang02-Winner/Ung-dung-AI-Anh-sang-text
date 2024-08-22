@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Question & Answer Chatbot</title>
+    <style>
+        body {
+            background-image: url("https://duet-cdn.vox-cdn.com/thumbor/0x0:1820x1213/1200x800/filters:focal(910x607:911x608):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/24247717/lp_logo_3.0.jpg");  
+            background-repeat: no-repeat;  
+            background-size: cover;      
+            background-position: center center;  
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px); /* Full-width minus padding and border */
+        }
+        input[type="submit"] {
+            background-color: #ff9800; /* Màu cam */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #fb8c00; /* Màu cam đậm hơn khi hover */
+        }
+        img {
+            margin-top: 20px;
+            border-radius: 8px; /* Bo tròn góc cho ảnh */
+            max-width: 90%; /* Giới hạn kích thước ảnh */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Ask a Question About an Image</h1>
+        <form method="post">
+            Image URL: <br><input type="text" name="img_url" required><br>
+            Question: <br><input type="text" name="question" required><br>
+            <input type="submit" value="Ask">
+        </form>
+        
+        {% if answer %}
+        <div class="answer">
+            <h2>Answer:</h2>
+            <p>{{ answer }}</p>
+            <h2>Image:</h2>
+            <img src="{{ img_url }}" alt="Submitted Image">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
